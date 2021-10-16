@@ -1,0 +1,109 @@
+* {
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+
+/* player video */
+
+.player-video {
+    position: relative;
+    float: float;
+    width: 640px;
+    height: 360px;
+    background-color: #000;
+}
+
+.player-video video {
+    width: 100%;
+    height: 100%;
+}
+
+.video-preloader {
+    display: block;
+    position: absolute;
+    left: 43%;
+    top: 35%;
+}
+
+.player-video .video-controls {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 10%;
+    bottom: 0;
+}
+
+.video-controls .video-btn {
+    display: block;
+    width: 40px;
+    height: 90%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.video-controls .video-btn :hover {
+    background-color: rgb(13, 199, 143);
+}
+
+.video-progress-bar {
+    cursor: pointer;
+    width: 100%;
+    height: 10%;
+    background-color: rgb(13, 199, 143);
+}
+
+.video-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background-color: rgb(13, 199, 143);
+}
+
+.video-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background-color: rgb(56, 13, 199);
+}
+
+.video-controls .video-time {
+    display: block;
+    cursor: default;
+    color: #fff;
+    padding: 8px 5px;
+}
+
+.slider {
+    background-color: rgba(225, 225, 0, 0.8);
+    width: 80px;
+    height: 20%;
+    margin: 2% 0;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 1px;
+}
+
+.slider-vol {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: rgba(225, 0, 0, 0.8);
+}
