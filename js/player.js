@@ -35,6 +35,10 @@ function prepare(elem) {
 
 function getPosition(element) {
     var rect = element.getBoundingClientRect();
+    console.log({
+        x: rect.left,
+        y: rect.top
+    })
     return {
         x: rect.left,
         y: rect.top
@@ -69,8 +73,9 @@ function mute() {
 
 function showVolume(event) {
     if (drag) {
-        var w = slider.clientWidth - 2;
-        var x = event.clientX - slider.offsetLeft;
+        var w = slider.clientWidth;
+        var x = ((event.clientX - getPosition(slider).x));
+
         var pctVol = (x / w);
 
         sliderVol.style.width = x + 'px';
@@ -89,7 +94,7 @@ function showVolume(event) {
 }
 
 function seeker(event) {
-    pctBar = (event.clientX / barProgress.clientWidth) * 100;
+    pctBar = ((event.clientX - getPosition(barProgress).x) / barProgress.clientWidth) * 100;
     view.currentTime = (view.duration * pctBar) / 100
 }
 
