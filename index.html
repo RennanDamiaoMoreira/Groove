@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="style/materialize.css" media="screen,projection" />
+
+    <link rel="stylesheet" href="style/player.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/player.js"></script>
+
+</head>
+
+<body class="black " oncontextmenu="return false">
+
+    <div class="player-video center" id="video" onmouseover="prepare(this)">
+        <video class="video-view" poster="https://popnow.com.br/wp-content/uploads/2018/03/avengers-infinity-war-official-poster-2018-4o.jpg">
+         <source src="test.mp4" type="video/mp4">
+      </video>
+
+
+
+
+        <div class="video-controls red-text">
+
+            <div class="video-progress-bar float-left">
+                <div class="video-loader"></div>
+                <div class="video-progress"></div>
+            </div>
+
+            <div class="video-play float-left video-btn ">
+                <i class="material-icons">play_arrow</i>
+            </div>
+
+            <div class="video-volume float-left video-btn">
+                <i class="material-icons">volume_up</i>
+            </div>
+
+            <div class="slider float-left">
+                <div class="slider-vol"></div>
+            </div>
+
+            <div class="video-time white-text float-left">00:00 | 00:00</div>
+            <div class="video-screen float-right video-btn">
+                <i class="material-icons">fullscreen</i>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="./renderer.js"></script>
+</body>
+
+</html>
