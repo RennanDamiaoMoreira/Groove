@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 https://stackoverflow.com/questions/15816503/how-get-real-positions-of-element-in-javascript
  ler este forum 
+=======
+https://stackoverflow.com/questions/15816503/how-get-real-positions-of-element-in-javascript
+ ler este forum 
+ 
+>>>>>>> teste
