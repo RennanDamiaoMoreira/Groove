@@ -10,51 +10,157 @@
     <link rel="stylesheet" href="style/player.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <script src="js/player.js"></script>
+
+
+    <link rel="stylesheet" href="test.css">
+
 
 </head>
 
-<body class="black container" oncontextmenu="return false">
+<body class="center " oncontextmenu="return false">
+    <div class="row valign-wrapper">
+        <div class="col s12" id="player">
+            <audio src="Y2Mate.is - K.Flay - Can't Sleep (The Suicide Squad Soundtrack) (Lyrics)-i2ytsdlM2fs-160k-1634258853024.mp3"></audio>
+            <h1 class="title">I can't sleep</h1>
+            <h2 class="time"></h2>
+            <div class="controls">
+                <div class="butons-primary">
+                    <i class="material-icons medium previous button">skip_previous</i>
+                    <i class="material-icons large play button">play_arrow</i>
+                    <i class="material-icons medium next button">skip_next</i>
 
-    <div class="player-video center" id="video" onmouseover="prepare(this)">
-        <video class="video-view" poster="https://popnow.com.br/wp-content/uploads/2018/03/avengers-infinity-war-official-poster-2018-4o.jpg">
+                </div>
+                <div class="timeLine container">
+
+                    <p class="range-field">
+                        <input id="progress" type="range" min="0" max="100" />
+                    </p>
+
+
+                </div>
+                <br><br><br>
+                <div class="volume container">
+
+                    <div class="row">
+                        <div class="col s1 left-algin">
+                            <i id="speaker" class="material-icons medium button">volume_up</i>
+                        </div>
+                        <div class="col s10">
+                            <p class="range-field container">
+                                <input type="range" id="volume" min="0" max="100" />
+                            </p>
+                        </div>
+                        <div class="col s1">
+                            <i id="playlistButton" class="material-icons button medium">playlist_play</i>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col s3 yellow playlist" id="playlist">
+            <h3>PlayList</h3>
+            <i class="material-icons small">add</i>
+            <i class="material-icons small">save</i>
+            <i class="material-icons small">folder_open</i>
+            <div class="row ">
+                <table class="striped centered responsive-table">
+                    <thead>
+                        <tr>
+                            <th data-field="id">Musica</th>
+
+                            <th data-field="price">Comandos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="blue">
+                            <td>I can't sleep</td>
+                            <td>
+                                <button>subir</button>
+                                <button>descer</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Rain</td>
+                            <td>
+                                <button>subir</button>
+                                <button>descer</button>
+                            </td>
+
+                        </tr>
+                        <tr class="red">
+                            <td>As andorinhas voltaram </td>
+                            <td>
+                                <button>subir</button>
+                                <button>descer</button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <!--
+
+    <div class="row pink center">
+        <h1>Player antigo</h1>
+        <div class="player-video " id="video" onmouseover="prepare(this)">
+            <video class="video-view" poster="https://popnow.com.br/wp-content/uploads/2018/03/avengers-infinity-war-official-poster-2018-4o.jpg">
          <source src="test.mp4" type="video/mp4">
+         <source src="Y2Mate.is - K.Flay - Can't Sleep (The Suicide Squad Soundtrack) (Lyrics)-i2ytsdlM2fs-160k-1634258853024.mp3" type="audio/mp3">
       </video>
 
 
 
 
-        <div class="video-controls red-text">
+            <div class="video-controls red-text">
 
-            <div class="video-progress-bar float-left">
-                <div class="video-loader"></div>
-                <div class="video-progress"></div>
+                <div class="video-progress-bar float-left">
+                    <div class="video-loader"></div>
+                    <div class="video-progress"></div>
+                </div>
+
+                <div class="video-play float-left video-btn ">
+                    <i class="material-icons">play_arrow</i>
+                </div>
+
+                <div class="video-volume float-left video-btn">
+                    <i class="material-icons">volume_up</i>
+                </div>
+
+                <div class="slider float-left">
+                    <div class="slider-vol"></div>
+                </div>
+
+                <div class="video-time white-text float-left">00:00 | 00:00</div>
+                <div class="video-screen float-right video-btn">
+                    <i class="material-icons">fullscreen</i>
+                </div>
             </div>
 
-            <div class="video-play float-left video-btn ">
-                <i class="material-icons">play_arrow</i>
-            </div>
+            <div class="clear"></div>
 
-            <div class="video-volume float-left video-btn">
-                <i class="material-icons">volume_up</i>
-            </div>
-
-            <div class="slider float-left">
-                <div class="slider-vol"></div>
-            </div>
-
-            <div class="video-time white-text float-left">00:00 | 00:00</div>
-            <div class="video-screen float-right video-btn">
-                <i class="material-icons">fullscreen</i>
-            </div>
         </div>
-
-        <div class="clear"></div>
-
     </div>
+
+
+
+
+
+-->
+
     <!--JavaScript at end of body for optimized loading-->
+    <script src="js/audioPlayer.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script src="./renderer.js"></script>
+    <script src="js/teste.js"></script>
 </body>
 
 </html>
