@@ -1,37 +1,107 @@
-var player, primaryBtn, play, next, audio, time, volume, volumeBtn;
+var player, primaryBtn, play, next, audio, time, volume, volumeBtn, path;
 var intervalTimer, progressBar;
 var playListOpen = false,
     playList, playlistButton, muteStatus = false;
-prepare();
+var nextBtn, backBtn;
+var now, list;
+var title;
+var body = document.getElementsByTagName("body")[0];
+var angle = 0
+    //prepare();
+
+
+function handleFiles(event) {
+    var files = event.target.files;
+    console.log(files)
+    list = [];
+    for (let i = 0; i < files.length; i++) {
+        if (files[i].type.includes('audio/')) {
+            let obj = {
+                name: files[i].name.slice(0, 19),
+                path: URL.createObjectURL(files[i])
+            }
+            list.push(obj);
+        }
+    }
+    $("#src").attr("src", URL.createObjectURL(files[0]));
+    path = (URL.createObjectURL(files[0]))
+    document.getElementById("audio").load();
+    prepare()
+}
+
+document.getElementById("upload").addEventListener("change", handleFiles, false);
 
 function prepare() {
+    audio = new Audio(list[0].path)
+    now = 0;
     player = document.getElementById("player");
     progressBar = document.getElementById("progress");
     playlistButton = document.getElementById("playlistButton")
     primaryBtn = player.querySelector(".butons-primary");
     playList = document.getElementById("playlist")
-    console.log(playList)
-    audio = player.getElementsByTagName('audio')[0];
     play = primaryBtn.querySelector('.play');
     time = player.querySelector('.time');
     volume = document.getElementById("volume")
     volumeBtn = document.getElementById("speaker")
-
+    nextBtn = primaryBtn.querySelector('.next')
+    backBtn = primaryBtn.querySelector('.previous')
+    title = player.querySelector('.title')
     volume.value = 100;
     audio.volume = 1;
     progressBar.value = 0;
-    play.addEventListener('click', playAudio)
 
+    updateTitle()
+    play.addEventListener('click', playAudio)
     volume.addEventListener('mousedown', startDrag);
     volume.addEventListener('mouseup', startDrag);
     volume.addEventListener('mousemove', showVolume);
     volumeBtn.addEventListener('click', mute);
     progressBar.addEventListener('click', seeker);
     playlistButton.addEventListener('click', openPlaylist);
+    nextBtn.addEventListener('click', next);
+    backBtn.addEventListener('click', back);
+    backBtn.addEventListener('dblclick', backOne);
 
 
-
+    criarTabela()
     intervalTimer = setInterval(updateTimer, 1000);
+}
+
+function back() {
+    audio.currentTime = 0;
+    audio.play()
+}
+
+function backOne() {
+    if (now != 0) {
+        now--;
+        audio.pause();
+
+        audio = new Audio(list[now].path)
+            //audio.load(list[now].path);
+        audio.play()
+        updateTitle()
+        criarTabela()
+    }
+}
+
+function updateTitle() {
+
+    title.innerHTML = list[now] ? list[now].name : ""
+}
+
+function next() {
+    if (list.length > now + 1) {
+
+        now++;
+        //audio.pause();
+        audio.currentTime = audio.duration;
+        audio = new Audio(list[now].path)
+            //audio.load(list[now].path);
+        audio.play()
+        updateTitle()
+        criarTabela()
+    }
 }
 
 function mute() {
@@ -116,8 +186,14 @@ function updateTimer() {
     }
 
     let current = convertTimer(audio.currentTime)
-    let duration = convertTimer(audio.duration)
+    let duration = audio.duration ? convertTimer(audio.duration) : "00:00"
+
     time.innerHTML = current + " | " + duration;
+
+    if (current === duration) { next() }
+    angle++
+    // body.style.background = "linear-gradient(" + angle + "deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%)";
+    console.log(body)
 }
 
 //Audio play
@@ -126,15 +202,15 @@ function playAudio() {
         if (audio.played.start(0) == 0 && !audio.paused) {
             audio.pause();
             //let icon = btnPlay.querySelector('.material-icons');
-            play.innerHTML = "pause"
+            play.innerHTML = "play_arrow";
         } else {
             audio.play()
                 //let icon = btnPlay.querySelector('.material-icons');
-            play.innerHTML = "play_arrow";
+            play.innerHTML = "pause";
         }
     } else {
         audio.play()
-
+        play.innerHTML = "pause";
     }
 }
 
@@ -163,3 +239,41 @@ function convertTimer(time) {
     return result;
 
 }
+
+
+function criarTabela(conteudo) {
+    const tr = '<tr>'
+    const td = '<td>'
+    const trAc = '<tr class="blue">'
+    const tdc = '</td>'
+    const trc = '</tr>'
+    const btn = '<td>    <button>subir</button>    <button>descer</button> </td>'
+
+
+
+    // <
+    // td > I can 't sleep</td> <
+    // td >
+    //     <
+    //     button > subir < /button> <
+    // button > descer < /button> < /
+    //     td >
+
+
+    var tabela = document.getElementsByTagName("table")[0];
+    var tbody = tabela.getElementsByTagName("tbody")[0];
+    tbody.innerHTML = "";
+    console.log(tbody);
+    list.forEach((elem, count) => {
+        let string = ""
+        string += count == now ? trAc : tr;
+        string += td + elem.name + tdc + btn + trc;
+        tbody.innerHTML += string;
+
+    })
+
+
+    console.log(tabela);
+    return tabela;
+}
+//document.getElementById("tabela").appendChild(
