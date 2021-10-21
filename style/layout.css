@@ -1,0 +1,20 @@
+body {
+    animation: animateBg 10s linear infinite;
+    background-image: linear-gradient(0deg, #6272a4, #55628b, #475375, #353e57, #2e354b, #2b3142, #2e354b, #353e57, #475375, #55628b, #6272a4);
+    background-size: 100% 1100%;
+    height: 100vh;
+    width: 100vw;
+}
+
+.button {
+    cursor: pointer;
+}
+
+@keyframes animateBg {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+}
